@@ -1,0 +1,31 @@
+body {
+	background-image: url("../images/BG007.jpg");
+}
+
+.container {
+	margin-top: 35px;
+	background-color: silver;
+	border-width: 15px;
+	border-color: black;  
+}
+
+.gameTitle {
+	color: #f00000;
+	font-size: 50px;
+	font-weight: 800;
+	font-family: 'Aldrich', sans-serif;
+	align: center;
+}
+
+.start {
+	background-image: url("../images/BG007.jpg");
+}
+
+
+.footerbox {
+
+}
+
+.footer {
+	alignment: fixed;
+}
