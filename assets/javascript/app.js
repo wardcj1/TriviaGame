@@ -1,27 +1,27 @@
-    var number = 5;
+    var number = 80;
     var intervalId;
     var oneSecond = 1000;
+    var correctAns = 0;
+    var incorrectAns = 0;
+    var unanswered = 1;
+    // var gameOverAudio = new Audio("goldfingerSong.mp3");
+    // var gameStartAudio = new Audio("themeTune.mp3");
+    // var doneButtonAudio = new Audio("shocking.wav");
 
-// window.onload = function() {
-//   $("<button>#start-timer").on("click", timer.start);
-//     $("#display").html("00:59");
-//   gameStartAudio.play();
-// }
-
-    var startBtn = 
     $("#start").on("click", run);
     $("#stop").on("click", stop);
 
     function run() {
       $("#start").hide();
-      $("#stop").html("<center><button>Done!</button></center>");
+      $("#timer").html("<center><h2>80 seconds remaining</h2></center>");
+      $("#stop").html("<center><button class=stopGame>STOP GAME!</button></center>");
       intervalId = setInterval(decrement, oneSecond);
-      number = 5;
+        renderQ();
     }
 
     function decrement() {
       number--;
-      $("#show-number").html("<h2>" + number + " seconds remaining</h2>");
+      $("#timer").html("<center><h2>" + number + " seconds remaining</h2></center>");
       if (number === 0) {
         stop();
       }
@@ -30,29 +30,63 @@
     function stop() {
       clearInterval(intervalId);
       $("#stop").hide();
-      $("#show-number").html("<h2>Times Up!</h2>");
-      $("#correct-counter").html("<h2>Correct Answers: </h2>");
-      $("#incorrect-counter").html("<h2>Incorrect Answers: </h2>");
-      $("#unanswered-counter").html("<h2>Unanswered: </h2>")
+      $(".questions").hide();
+      $("#timer").html("<h2>All Done!</h2>");
+      $("#correct-counter").html("<h2>Correct Answers: " + correctAns +"</h2>");
+      $("#incorrect-counter").html("<h2>Incorrect Answers: " + incorrectAns + "</h2>");
+      $("#unanswered-counter").html("<h2>Unanswered: " + unanswered + "</h2>");
     }
-  
-  //   var renderOne = function(character, renderArea, charStatus) {
+ 
+   // var questionArray = ["Which author created James Bond?", "In the James Bond series of films, Major Geoffrey Boothroyd is better known as who?", "Which branch of the British military did fictional character James Bond serve in?", "In the James Bond series of films, what does SPECTRE stand for?", "In which James Bond film does Felix Leiter lose a leg in a shark attack?"];
+   
+  // var answerArray = [["Ian Fleming", "Steven King", "Robert Dahl", "Albert Young"], ["Footsoldier", "Q", "Kandy Kane", "Hubert"]];
 
-  //   // This block of code builds the character card, and renders it to the page.
-  //   var charDiv = $("<div class='character' data-name='" + character.name + "'>");
-  //   var charName = $("<div class='character-name'>").text(character.name);
-  //   var charImage = $("<img alt='image' class='character-image'>").attr("src", character.imageUrl);
-  //   var charHealth = $("<div class='character-health'>").text(character.health);
-  //   charDiv.append(charName).append(charImage).append(charHealth);
-  //   $(renderArea).append(charDiv);
+  // var correctAnswers = ["Ian Fleming", "Q"];
 
-  //   // If the character is an enemy or defender (the active opponent), add the appropriate class.
-  //   if (charStatus === "enemy") {
-  //     $(charDiv).addClass("enemy");
-  //   }
-  //   else if (charStatus === "defender") {
-  //     // Populate currDefender with the selected opponent's information.
-  //     currDefender = character;
-  //     $(charDiv).addClass("target-enemy");
-  //   }
-  // };
+  function renderQ() {
+    var quesDiv = $("<div class=questions>" + questions.question3.ask + "</div>");
+    var ans1 = $("<div class=trueAns>" + questions.question3.trueAns + "</div>");
+    var ans2 = $("<div class=falseAns>" + questions.question3.falseAns1 + "</div>");
+    var ans3 = $("<div class=falseAns>" + questions.question3.falseAns2 + "</div>");
+    var ans4 = $("<div class=falseAns>" + questions.question3.falseAns3 + "</div>");
+    quesDiv.append(ans1).append(ans2).append(ans3).append(ans4);
+    $("#questions").append(quesDiv);
+      ansCheck();
+  };
+
+  function ansCheck() {
+      $(".trueAns").click(function() {
+      unanswered--;
+      correctAns++;
+      stop();
+      });
+      $(".falseAns").click(function() {
+      unanswered--;
+      incorrectAns++;
+      stop();
+      }); 
+  };
+
+  var questions = {
+    "question3": {
+      ask: "Which branch of the British military did fictional character James Bond serve in?",
+      trueAns: "Royal Navy",
+      falseAns1: "Royal Army",
+      falseAns2: "Special Forces",
+      falseAns3: "Secret Service"
+    },
+     "question4": {
+      ask: "In the James Bond series of films, what does SPECTRE stand for?",
+      trueAns: "Special Executive for Counterintelligence Terrorism Revenge and Extortion",
+      falseAns1: "Deathray",
+      falseAns2: "Submarine",
+      falseAns3: "Nuclear Weapon"
+    },
+     "question5": {
+      ask: "In which James Bond film does Felix Leiter lose a leg in a shark attack?",
+      trueAns: "Licence To Kill",
+      falseAns1: "Moonraker",
+      falseAns2: "Goldfinger",
+      falseAns3: "Thunderball"
+    }
+  }
