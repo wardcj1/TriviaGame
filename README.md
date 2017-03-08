@@ -2,31 +2,31 @@
 (HW - TriviaGame)
 
 ## Live Link
- - https://wardcj1.github.io/triviagame
+ - https://wardcj1.github.io/TriviaGame
 
-## You will be given a random number at the start of the game.
-There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
-You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.
-The value of each crystal is hidden from you until you click on it.
-Each time when the game starts, the game will change the values of each crystal.
+## At the start of the game, questions display and the user clicks on their answer choice.
 
-## Requirements
-#### Add a simple description of what the HW requirements were
+## HW Requirements
+#### Create a Trivia game using JavaScript for the logic and jQuery to manipulate HTML. Be sure to layout this app with valid HTML and stylish CSS.
 
-- There will be four crystals displayed as buttons on the page.
-- The player will be shown a random number at the start of the game.
-- When the player clicks on a crystal, it will add a specific amount of points to the player's total score.
-- Your game will hide this amount until the player clicks a crystal.
-- When they do click one, update the player's score counter.
-- The player wins if their total score matches the random number from the beginning of the game.
-- The player loses if their score goes above the random number.
-- The game restarts whenever the player wins or loses.
-- When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
-- The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
+- 
 
 ## Technologies Used
-#### Use bullets to list out the technologies used. For example,
 - Jquery for Dom Manipulation
 - html
 - css
 - bootstrap
+
+## Sample Code Used
+  function renderQ() {
+    var quesDiv = $("<div class=questions><h3>" + questions[questionNum].ask + "</h3></div>");
+    var ans1 = $("<div class=trueAns>" + questions[questionNum].trueAns + "</div>");
+    var ans2 = $("<div class=falseAns>" + questions[questionNum].falseAns1 + "</div>");
+    var ans3 = $("<div class=falseAns>" + questions[questionNum].falseAns2 + "</div>");
+    var ans4 = $("<div class=falseAns>" + questions[questionNum].falseAns3 + "</div>");
+    quesDiv.append(ans1).append(ans2).append(ans3).append(ans4);
+    $("#questions").append(quesDiv);
+      ansCheck();
+  };
+
+ - Creates a new question with each click.
