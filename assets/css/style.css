@@ -21,11 +21,12 @@ body {
 
 .trueAns {
 	border-radius: 8px;
+	border-color: gold;
 	font-size: 20px;
 	font-weight: 800;
 	font-family: 'Aldrich', sans-serif;
 	color: gold;
-	background-color: navy;
+	background-color: black;
 	width: 30%;
 	margin-left: 35%;
 	margin-right: 35%;
@@ -35,11 +36,12 @@ body {
 
 .falseAns {
 	border-radius: 8px;
+	border-color: gold;
 	font-size: 20px;
 	font-weight: 800;
 	font-family: 'Aldrich', sans-serif;
 	color: gold;
-	background-color: navy;
+	background-color: black;
 	width: 30%;
 	margin-left: 35%;
 	margin-right: 35%;
@@ -79,6 +81,13 @@ body {
 h2 {
 	margin-left: 20%;
 	font-size: 50px;
+	font-weight: 800;
+	font-family: 'Aldrich', sans-serif;
+}
+
+h3 {
+	margin-left: 20%;
+	font-size: 30px;
 	font-weight: 800;
 	font-family: 'Aldrich', sans-serif;
 }
